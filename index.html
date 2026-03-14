@@ -42,12 +42,6 @@
             .category-inactive {
                 @apply bg-dark text-secondary hover:bg-dark/80;
             }
-            .dragging {
-                @apply transform rotate-2 scale-105 z-50 opacity-80 pointer-events-none shadow-xl !important;
-            }
-            .drag-over {
-                @apply transform scale-102 border-2 border-dashed border-primary/50 bg-primary/10;
-            }
         }
     </style>
 </head>
@@ -56,9 +50,9 @@
         <!-- Header -->
         <header class="mb-8 text-center">
             <h1 class="text-4xl font-bold mb-2 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-                我的网站收藏夹
+                RonG XinG Shi Ke
             </h1>
-            <p class="text-secondary">整理你常用的网站，让访问更高效</p>
+            <p class="text-secondary">整理常用的网站，让访问更高效</p>
         </header>
 
         <!-- Search Bar -->
@@ -124,7 +118,7 @@
         </div>
 
         <!-- Website Grid -->
-        <div id="websiteGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 auto-cols-fr">
+        <div id="websiteGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
             <!-- Websites will be dynamically added here -->
         </div>
 
@@ -217,612 +211,7 @@
                     </select>
                 </div>
                 
-                <div>
-                    <label class="block text-sm font-medium mb-2">选择图标</label>
-                    <div class="grid grid-cols-8 gap-2 max-h-40 overflow-y-auto p-2 bg-dark/50 rounded-lg">
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-globe">
-                            <i class="fa fa-globe text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-github">
-                            <i class="fa fa-github text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-code">
-                            <i class="fa fa-code text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-youtube-play">
-                            <i class="fa fa-youtube-play text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-twitter">
-                            <i class="fa fa-twitter text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-stack-overflow">
-                            <i class="fa fa-stack-overflow text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-google">
-                            <i class="fa fa-google text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-newspaper-o">
-                            <i class="fa fa-newspaper-o text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-envelope">
-                            <i class="fa fa-envelope text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-calendar">
-                            <i class="fa fa-calendar text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-map-marker">
-                            <i class="fa fa-map-marker text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-camera">
-                            <i class="fa fa-camera text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-music">
-                            <i class="fa fa-music text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-video-camera">
-                            <i class="fa fa-video-camera text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-picture-o">
-                            <i class="fa fa-picture-o text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-file-text-o">
-                            <i class="fa fa-file-text-o text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-book">
-                            <i class="fa fa-book text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-graduation-cap">
-                            <i class="fa fa-graduation-cap text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-laptop">
-                            <i class="fa fa-laptop text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-desktop">
-                            <i class="fa fa-desktop text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-mobile">
-                            <i class="fa fa-mobile text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-tablet">
-                            <i class="fa fa-tablet text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-cloud">
-                            <i class="fa fa-cloud text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-database">
-                            <i class="fa fa-database text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-server">
-                            <i class="fa fa-server text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-wifi">
-                            <i class="fa fa-wifi text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-bluetooth">
-                            <i class="fa fa-bluetooth text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-lock">
-                            <i class="fa fa-lock text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-unlock">
-                            <i class="fa fa-unlock text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-shield">
-                            <i class="fa fa-shield text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-key">
-                            <i class="fa fa-key text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-user">
-                            <i class="fa fa-user text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-users">
-                            <i class="fa fa-users text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-user-plus">
-                            <i class="fa fa-user-plus text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-user-circle">
-                            <i class="fa fa-user-circle text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-comments">
-                            <i class="fa fa-comments text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-comment">
-                            <i class="fa fa-comment text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-share-alt">
-                            <i class="fa fa-share-alt text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-connectdevelop">
-                            <i class="fa fa-connectdevelop text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-link">
-                            <i class="fa fa-link text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-chain-broken">
-                            <i class="fa fa-chain-broken text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-search">
-                            <i class="fa fa-search text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-filter">
-                            <i class="fa fa-filter text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-sliders">
-                            <i class="fa fa-sliders text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-cog">
-                            <i class="fa fa-cog text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-wrench">
-                            <i class="fa fa-wrench text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-paint-brush">
-                            <i class="fa fa-paint-brush text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-pencil">
-                            <i class="fa fa-pencil text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-scissors">
-                            <i class="fa fa-scissors text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-download">
-                            <i class="fa fa-download text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-upload">
-                            <i class="fa fa-upload text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-save">
-                            <i class="fa fa-save text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-floppy-o">
-                            <i class="fa fa-floppy-o text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-print">
-                            <i class="fa fa-print text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-trash">
-                            <i class="fa fa-trash text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-undo">
-                            <i class="fa fa-undo text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-repeat">
-                            <i class="fa fa-repeat text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-refresh">
-                            <i class="fa fa-refresh text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-home">
-                            <i class="fa fa-home text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-building">
-                            <i class="fa fa-building text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-briefcase">
-                            <i class="fa fa-briefcase text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-money">
-                            <i class="fa fa-money text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-credit-card">
-                            <i class="fa fa-credit-card text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-shopping-cart">
-                            <i class="fa fa-shopping-cart text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-shopping-bag">
-                            <i class="fa fa-shopping-bag text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-gift">
-                            <i class="fa fa-gift text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-heart">
-                            <i class="fa fa-heart text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-star">
-                            <i class="fa fa-star text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-thumbs-up">
-                            <i class="fa fa-thumbs-up text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-thumbs-down">
-                            <i class="fa fa-thumbs-down text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-check">
-                            <i class="fa fa-check text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-times">
-                            <i class="fa fa-times text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-exclamation">
-                            <i class="fa fa-exclamation text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-question">
-                            <i class="fa fa-question text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-info">
-                            <i class="fa fa-info text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-exclamation-triangle">
-                            <i class="fa fa-exclamation-triangle text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-bell">
-                            <i class="fa fa-bell text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-bell-slash">
-                            <i class="fa fa-bell-slash text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-volume-up">
-                            <i class="fa fa-volume-up text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-volume-down">
-                            <i class="fa fa-volume-down text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-volume-off">
-                            <i class="fa fa-volume-off text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-mute">
-                            <i class="fa fa-mute text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-step-backward">
-                            <i class="fa fa-step-backward text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-play">
-                            <i class="fa fa-play text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-pause">
-                            <i class="fa fa-pause text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-stop">
-                            <i class="fa fa-stop text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-step-forward">
-                            <i class="fa fa-step-forward text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-fast-backward">
-                            <i class="fa fa-fast-backward text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-fast-forward">
-                            <i class="fa fa-fast-forward text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-random">
-                            <i class="fa fa-random text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-loop">
-                            <i class="fa fa-loop text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-list">
-                            <i class="fa fa-list text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-list-ul">
-                            <i class="fa fa-list-ul text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-list-ol">
-                            <i class="fa fa-list-ol text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-indent">
-                            <i class="fa fa-indent text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-outdent">
-                            <i class="fa fa-outdent text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-sort">
-                            <i class="fa fa-sort text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-sort-asc">
-                            <i class="fa fa-sort-asc text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-sort-desc">
-                            <i class="fa fa-sort-desc text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-sort-alpha-asc">
-                            <i class="fa fa-sort-alpha-asc text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-sort-alpha-desc">
-                            <i class="fa fa-sort-alpha-desc text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-sort-numeric-asc">
-                            <i class="fa fa-sort-numeric-asc text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-sort-numeric-desc">
-                            <i class="fa fa-sort-numeric-desc text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-arrow-up">
-                            <i class="fa fa-arrow-up text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-arrow-down">
-                            <i class="fa fa-arrow-down text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-arrow-left">
-                            <i class="fa fa-arrow-left text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-arrow-right">
-                            <i class="fa fa-arrow-right text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-arrow-up-left">
-                            <i class="fa fa-arrow-up-left text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-arrow-up-right">
-                            <i class="fa fa-arrow-up-right text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-arrow-down-left">
-                            <i class="fa fa-arrow-down-left text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-arrow-down-right">
-                            <i class="fa fa-arrow-down-right text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-long-arrow-up">
-                            <i class="fa fa-long-arrow-up text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-long-arrow-down">
-                            <i class="fa fa-long-arrow-down text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-long-arrow-left">
-                            <i class="fa fa-long-arrow-left text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-long-arrow-right">
-                            <i class="fa fa-long-arrow-right text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-chevron-up">
-                            <i class="fa fa-chevron-up text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-chevron-down">
-                            <i class="fa fa-chevron-down text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-chevron-left">
-                            <i class="fa fa-chevron-left text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-chevron-right">
-                            <i class="fa fa-chevron-right text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-angle-up">
-                            <i class="fa fa-angle-up text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-angle-down">
-                            <i class="fa fa-angle-down text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-angle-left">
-                            <i class="fa fa-angle-left text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-angle-right">
-                            <i class="fa fa-angle-right text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-dot-circle-o">
-                            <i class="fa fa-dot-circle-o text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-circle-o">
-                            <i class="fa fa-circle-o text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-circle">
-                            <i class="fa fa-circle text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-check-circle">
-                            <i class="fa fa-check-circle text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-check-circle-o">
-                            <i class="fa fa-check-circle-o text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-exclamation-circle">
-                            <i class="fa fa-exclamation-circle text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-exclamation-circle-o">
-                            <i class="fa fa-exclamation-circle-o text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-question-circle">
-                            <i class="fa fa-question-circle text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-question-circle-o">
-                            <i class="fa fa-question-circle-o text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-info-circle">
-                            <i class="fa fa-info-circle text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-info-circle-o">
-                            <i class="fa fa-info-circle-o text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-square">
-                            <i class="fa fa-square text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-square-o">
-                            <i class="fa fa-square-o text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-check-square">
-                            <i class="fa fa-check-square text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-check-square-o">
-                            <i class="fa fa-check-square-o text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-cube">
-                            <i class="fa fa-cube text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-cubes">
-                            <i class="fa fa-cubes text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-cube-o">
-                            <i class="fa fa-cube-o text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-cubes-o">
-                            <i class="fa fa-cubes-o text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-diamond">
-                            <i class="fa fa-diamond text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-gem">
-                            <i class="fa fa-gem text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-trophy">
-                            <i class="fa fa-trophy text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-award">
-                            <i class="fa fa-award text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-certificate">
-                            <i class="fa fa-certificate text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-flag">
-                            <i class="fa fa-flag text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-flag-o">
-                            <i class="fa fa-flag-o text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-flag-checkered">
-                            <i class="fa fa-flag-checkered text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-map">
-                            <i class="fa fa-map text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-map-o">
-                            <i class="fa fa-map-o text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-map-marker">
-                            <i class="fa fa-map-marker text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-map-pin">
-                            <i class="fa fa-map-pin text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-location-arrow">
-                            <i class="fa fa-location-arrow text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-compass">
-                            <i class="fa fa-compass text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-crosshairs">
-                            <i class="fa fa-crosshairs text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-eye">
-                            <i class="fa fa-eye text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-eye-slash">
-                            <i class="fa fa-eye-slash text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-bullseye">
-                            <i class="fa fa-bullseye text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-target">
-                            <i class="fa fa-target text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-bullhorn">
-                            <i class="fa fa-bullhorn text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-megaphone">
-                            <i class="fa fa-megaphone text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-microphone">
-                            <i class="fa fa-microphone text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-microphone-slash">
-                            <i class="fa fa-microphone-slash text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-phone">
-                            <i class="fa fa-phone text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-phone-square">
-                            <i class="fa fa-phone-square text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-phone-square-o">
-                            <i class="fa fa-phone-square-o text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-mobile">
-                            <i class="fa fa-mobile text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-mobile-phone">
-                            <i class="fa fa-mobile-phone text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-fax">
-                            <i class="fa fa-fax text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-address-book">
-                            <i class="fa fa-address-book text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-address-book-o">
-                            <i class="fa fa-address-book-o text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-address-card">
-                            <i class="fa fa-address-card text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-address-card-o">
-                            <i class="fa fa-address-card-o text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-id-card">
-                            <i class="fa fa-id-card text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-id-card-o">
-                            <i class="fa fa-id-card-o text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-vcard">
-                            <i class="fa fa-vcard text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-vcard-o">
-                            <i class="fa fa-vcard-o text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-calendar">
-                            <i class="fa fa-calendar text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-calendar-o">
-                            <i class="fa fa-calendar-o text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-calendar-check-o">
-                            <i class="fa fa-calendar-check-o text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-calendar-minus-o">
-                            <i class="fa fa-calendar-minus-o text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-calendar-plus-o">
-                            <i class="fa fa-calendar-plus-o text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-calendar-times-o">
-                            <i class="fa fa-calendar-times-o text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-clock-o">
-                            <i class="fa fa-clock-o text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-clock">
-                            <i class="fa fa-clock text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-hourglass-half">
-                            <i class="fa fa-hourglass-half text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-hourglass-o">
-                            <i class="fa fa-hourglass-o text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-hourglass-start">
-                            <i class="fa fa-hourglass-start text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-hourglass-end">
-                            <i class="fa fa-hourglass-end text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-birthday-cake">
-                            <i class="fa fa-birthday-cake text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-calendar-day">
-                            <i class="fa fa-calendar-day text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-calendar-week">
-                            <i class="fa fa-calendar-week text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-calendar-alt">
-                            <i class="fa fa-calendar-alt text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-calendar-range">
-                            <i class="fa fa-calendar-range text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-calendar-times">
-                            <i class="fa fa-calendar-times text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-calendar-plus">
-                            <i class="fa fa-calendar-plus text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-calendar-check">
-                            <i class="fa fa-calendar-check text-2xl"></i>
-                        </div>
-                        <div class="icon-option cursor-pointer p-2 rounded-lg hover:bg-primary/20 text-center" data-icon="fa-calendar-minus">
-                            <i class="fa fa-calendar-minus text-2xl"></i>
-                        </div>
-                    </div>
-                    <input type="hidden" id="selectedIcon" value="fa-globe">
-                </div>
+
                 
                 <div class="flex gap-3 pt-4">
                     <button type="button" id="cancelAddBtn" class="flex-1 px-6 py-3 rounded-lg bg-dark hover:bg-dark/80 transition-colors">
@@ -927,8 +316,6 @@
         const cancelAddCategoryBtn = document.getElementById('cancelAddCategoryBtn');
         const addCategoryForm = document.getElementById('addCategoryForm');
         const categoryNameInput = document.getElementById('categoryName');
-        const selectedIconInput = document.getElementById('selectedIcon');
-        const iconOptions = document.querySelectorAll('.icon-option');
 
         // State
         let websites = JSON.parse(localStorage.getItem('bookmarkWebsites')) || sampleWebsites;
@@ -947,271 +334,6 @@
             saveCategoriesToLocalStorage();
         }
 
-        // Initialize drag and drop functionality
-        function initializeDragAndDrop() {
-            const cards = websiteGrid.querySelectorAll('.website-card');
-            
-            cards.forEach((card, index) => {
-                // Add drag attributes
-                card.setAttribute('draggable', 'true');
-                card.dataset.index = index;
-                
-                // Bind drag events
-                card.addEventListener('dragstart', handleDragStart);
-                card.addEventListener('dragend', handleDragEnd);
-                card.addEventListener('dragover', handleDragOver);
-                card.addEventListener('dragenter', handleDragEnter);
-                card.addEventListener('dragleave', handleDragLeave);
-                card.addEventListener('drop', handleDrop);
-                
-                // Add long press support for mobile
-                let pressTimer;
-                card.addEventListener('mousedown', (e) => {
-                    if (e.button === 0) { // Left mouse button
-                        pressTimer = setTimeout(() => {
-                            handleLongPress(e, card);
-                        }, 500); // 500ms threshold for long press
-                    }
-                });
-                
-                card.addEventListener('mouseup', () => {
-                    clearTimeout(pressTimer);
-                });
-                
-                card.addEventListener('mouseleave', () => {
-                    clearTimeout(pressTimer);
-                });
-                
-                // Touch events for mobile
-                card.addEventListener('touchstart', (e) => {
-                    pressTimer = setTimeout(() => {
-                        handleLongPress(e, card);
-                    }, 500);
-                });
-                
-                card.addEventListener('touchend', () => {
-                    clearTimeout(pressTimer);
-                });
-            });
-        }
-        
-        // Handle long press to initiate drag
-        function handleLongPress(e, card) {
-            e.preventDefault();
-            
-            // Create a visual indicator that dragging is active
-            card.classList.add('dragging');
-            
-            // Set up dragged item
-            draggedItem = card;
-            dragStartIndex = parseInt(card.dataset.index);
-            
-            // Simulate drag start
-            const dragStartEvent = new DragEvent('dragstart', {
-                bubbles: true,
-                cancelable: true,
-                dataTransfer: new DataTransfer()
-            });
-            
-            card.dispatchEvent(dragStartEvent);
-            
-            // Show instructions
-            showNotification('拖动卡片到目标位置以重新排序');
-            
-            // Add temporary event listeners for mouse movement
-            document.addEventListener('mousemove', handleMouseMoveDuringDrag);
-            document.addEventListener('mouseup', handleMouseUpDuringDrag);
-            
-            // Add touch event listeners for mobile
-            document.addEventListener('touchmove', handleTouchMoveDuringDrag);
-            document.addEventListener('touchend', handleMouseUpDuringDrag);
-        }
-        
-        // Handle mouse movement during drag
-        function handleMouseMoveDuringDrag(e) {
-            if (draggedItem) {
-                draggedItem.style.position = 'fixed';
-                draggedItem.style.zIndex = '1000';
-                draggedItem.style.pointerEvents = 'none';
-                draggedItem.style.opacity = '0.8';
-                draggedItem.style.transform = 'rotate(5deg) scale(1.05)';
-                
-                const rect = draggedItem.getBoundingClientRect();
-                draggedItem.style.left = (e.clientX - rect.width / 2) + 'px';
-                draggedItem.style.top = (e.clientY - rect.height / 2) + 'px';
-                
-                // Highlight potential drop targets
-                const cards = websiteGrid.querySelectorAll('.website-card:not(.dragging)');
-                cards.forEach(card => {
-                    const cardRect = card.getBoundingClientRect();
-                    const centerX = cardRect.left + cardRect.width / 2;
-                    const centerY = cardRect.top + cardRect.height / 2;
-                    
-                    const distance = Math.sqrt(
-                        Math.pow(e.clientX - centerX, 2) + 
-                        Math.pow(e.clientY - centerY, 2)
-                    );
-                    
-                    if (distance < 100) {
-                        card.classList.add('drag-over');
-                    } else {
-                        card.classList.remove('drag-over');
-                    }
-                });
-            }
-        }
-        
-        // Handle touch movement during drag
-        function handleTouchMoveDuringDrag(e) {
-            if (draggedItem) {
-                const touch = e.touches[0];
-                handleMouseMoveDuringDrag({
-                    clientX: touch.clientX,
-                    clientY: touch.clientY
-                });
-            }
-        }
-        
-        // Handle mouse up during drag
-        function handleMouseUpDuringDrag(e) {
-            if (draggedItem) {
-                // Find the closest card to drop onto
-                const cards = Array.from(websiteGrid.querySelectorAll('.website-card:not(.dragging)'));
-                let closestCard = null;
-                let minDistance = Infinity;
-                
-                const clientX = e.type === 'touchend' ? e.changedTouches[0].clientX : e.clientX;
-                const clientY = e.type === 'touchend' ? e.changedTouches[0].clientY : e.clientY;
-                
-                cards.forEach(card => {
-                    const cardRect = card.getBoundingClientRect();
-                    const centerX = cardRect.left + cardRect.width / 2;
-                    const centerY = cardRect.top + cardRect.height / 2;
-                    
-                    const distance = Math.sqrt(
-                        Math.pow(clientX - centerX, 2) + 
-                        Math.pow(clientY - centerY, 2)
-                    );
-                    
-                    if (distance < minDistance) {
-                        minDistance = distance;
-                        closestCard = card;
-                    }
-                });
-                
-                if (closestCard && minDistance < 150) {
-                    const dropIndex = parseInt(closestCard.dataset.index);
-                    performReorder(dragStartIndex, dropIndex);
-                }
-                
-                // Reset dragged item
-                draggedItem.style.position = '';
-                draggedItem.style.zIndex = '';
-                draggedItem.style.pointerEvents = '';
-                draggedItem.style.opacity = '';
-                draggedItem.style.transform = '';
-                draggedItem.classList.remove('dragging');
-                
-                // Remove drag over highlights
-                websiteGrid.querySelectorAll('.drag-over').forEach(card => {
-                    card.classList.remove('drag-over');
-                });
-                
-                draggedItem = null;
-                dragStartIndex = -1;
-                
-                // Show completion message
-                showNotification('排序已更新');
-            }
-            
-            // Remove temporary event listeners
-            document.removeEventListener('mousemove', handleMouseMoveDuringDrag);
-            document.removeEventListener('mouseup', handleMouseUpDuringDrag);
-            document.removeEventListener('touchmove', handleTouchMoveDuringDrag);
-            document.removeEventListener('touchend', handleMouseUpDuringDrag);
-        }
-        
-        // Handle drag start
-        function handleDragStart(e) {
-            this.classList.add('dragging');
-            draggedItem = this;
-            dragStartIndex = parseInt(this.dataset.index);
-            
-            if (e.dataTransfer) {
-                e.dataTransfer.effectAllowed = 'move';
-                e.dataTransfer.setData('text/plain', dragStartIndex);
-            }
-        }
-        
-        // Handle drag end
-        function handleDragEnd() {
-            this.classList.remove('dragging');
-            websiteGrid.querySelectorAll('.drag-over').forEach(card => {
-                card.classList.remove('drag-over');
-            });
-            
-            if (draggedItem) {
-                draggedItem.style.position = '';
-                draggedItem.style.zIndex = '';
-                draggedItem.style.pointerEvents = '';
-                draggedItem.style.opacity = '';
-                draggedItem.style.transform = '';
-            }
-            
-            draggedItem = null;
-            dragStartIndex = -1;
-        }
-        
-        // Handle drag over
-        function handleDragOver(e) {
-            e.preventDefault();
-            if (e.dataTransfer) {
-                e.dataTransfer.dropEffect = 'move';
-            }
-        }
-        
-        // Handle drag enter
-        function handleDragEnter(e) {
-            if (this !== draggedItem) {
-                this.classList.add('drag-over');
-            }
-        }
-        
-        // Handle drag leave
-        function handleDragLeave() {
-            this.classList.remove('drag-over');
-        }
-        
-        // Handle drop
-        function handleDrop(e) {
-            e.preventDefault();
-            
-            if (this !== draggedItem) {
-                const dropIndex = parseInt(this.dataset.index);
-                performReorder(dragStartIndex, dropIndex);
-            }
-            
-            this.classList.remove('drag-over');
-        }
-        
-        // Perform the actual reordering
-        function performReorder(startIndex, endIndex) {
-            if (startIndex === endIndex) return;
-            
-            // Update websites array
-            const [movedWebsite] = websites.splice(startIndex, 1);
-            websites.splice(endIndex, 0, movedWebsite);
-            
-            // Save to localStorage
-            localStorage.setItem('websites', JSON.stringify(websites));
-            
-            // Re-render websites
-            renderWebsites();
-            
-            // Re-initialize drag and drop
-            initializeDragAndDrop();
-        }
-        
         // Render websites
         function renderWebsites() {
             const filteredWebsites = websites.filter(site => {
@@ -1230,15 +352,13 @@
                 emptyState.classList.add('hidden');
                 
                 websiteGrid.innerHTML = filteredWebsites.map(site => `
-                    <div class="flex flex-col items-center" onclick="window.open('${site.url}', '_blank')">
-                        <div class="website-card glass-effect rounded-lg p-4 card-hover relative h-24 w-44 flex items-center justify-center mb-2 group">
-                            <i class="fa ${site.icon || 'fa-globe'} text-primary text-2xl"></i>
-                            <button class="absolute top-1 right-1 text-secondary hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity z-10"
-                                     onclick="event.stopPropagation(); deleteWebsite(${site.id})">
-                                <i class="fa fa-trash"></i>
-                            </button>
-                        </div>
-                        <h3 class="text-center font-medium truncate text-sm w-full">${site.name}</h3>
+                    <div class="website-card glass-effect rounded-xl p-4 card-hover relative group bg-gradient-to-br from-dark/80 to-dark/40 border border-dark/80 hover:border-primary/30 backdrop-blur-sm" 
+                         onclick="window.open('${site.url}', '_blank')">
+                        <h3 class="text-center font-medium truncate transition-all duration-500 ease-out hover:text-primary hover:scale-110 hover:-rotate-12" style="transform-origin: center;">${site.name}</h3>
+                        <button class="absolute top-2 right-2 text-secondary hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity z-10"
+                                onclick="event.stopPropagation(); deleteWebsite(${site.id})">
+                            <i class="fa fa-trash"></i>
+                        </button>
                     </div>
                 `).join('');
             }
@@ -1247,9 +367,14 @@
         // Setup event listeners
         function setupEventListeners() {
             // Search
+            // Add debounced search
+            let searchTimeout;
             searchInput.addEventListener('input', (e) => {
-                searchTerm = e.target.value;
-                renderWebsites();
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(() => {
+                    searchTerm = e.target.value;
+                    renderWebsites();
+                }, 300);
             });
 
             // Add category button
@@ -1299,20 +424,6 @@
                 }
             });
 
-            // Icon selection
-            iconOptions.forEach(option => {
-                option.addEventListener('click', () => {
-                    // Remove selected class from all options
-                    iconOptions.forEach(opt => opt.classList.remove('bg-primary/30', 'ring-2', 'ring-primary'));
-                    
-                    // Add selected class to clicked option
-                    option.classList.add('bg-primary/30', 'ring-2', 'ring-primary');
-                    
-                    // Update hidden input with selected icon
-                    selectedIconInput.value = option.dataset.icon;
-                });
-            });
-
             // Add site form
             addSiteForm.addEventListener('submit', handleAddSite);
         }
@@ -1338,15 +449,15 @@
             const name = document.getElementById('siteName').value;
             const url = document.getElementById('siteUrl').value;
             const category = document.getElementById('siteCategory').value;
-            const selectedIcon = selectedIconInput.value;
+            const tags = [];
 
             const newSite = {
                 id: Date.now(),
                 name,
                 url: url.startsWith('http') ? url : 'https://' + url,
                 category,
-                tags: ['未分类'],
-                icon: selectedIcon
+                tags: tags.length > 0 ? tags : ['未分类'],
+                icon: getIconForCategory(category)
             };
 
             websites.push(newSite);
@@ -1552,21 +663,16 @@
             localStorage.setItem('bookmarkCategories', JSON.stringify(categories));
         }
 
-        // Reset icon selection when modal is opened
-        function openModal() {
-            addModal.classList.remove('hidden');
-            addModal.classList.add('flex');
-            document.body.style.overflow = 'hidden';
-            
-            // Reset icon selection
-            iconOptions.forEach(opt => opt.classList.remove('bg-primary/30', 'ring-2', 'ring-primary'));
-            selectedIconInput.value = 'fa-globe';
-            
-            // Select the default icon
-            const defaultIcon = document.querySelector('[data-icon="fa-globe"]');
-            if (defaultIcon) {
-                defaultIcon.classList.add('bg-primary/30', 'ring-2', 'ring-primary');
-            }
+        // Get icon based on category
+        function getIconForCategory(category) {
+            const icons = {
+                '工具': 'fa-wrench',
+                '学习': 'fa-book',
+                '娱乐': 'fa-gamepad',
+                '社交': 'fa-users',
+                '资讯': 'fa-newspaper-o'
+            };
+            return icons[category] || 'fa-globe';
         }
 
         // Save to local storage
@@ -1607,5 +713,66 @@
         // Initialize the app
         document.addEventListener('DOMContentLoaded', init);
     </script>
+
+    <!-- Contact Section -->
+    <footer class="mt-16 py-8 border-t border-dark/80">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="mb-6">
+                <h2 class="text-2xl font-bold mb-2">与我联系</h2>
+                <p class="text-secondary">如果你对我的内容感兴趣，或者有任何问题，欢迎通过以下方式联系我：</p>
+            </div>
+            <div class="space-y-4 max-w-2xl">
+                <div class="flex items-center py-3 border-b-[5px] border-dark/80">
+                    <div class="flex items-center space-x-4">
+                        <div class="text-2xl w-10">🎵</div>
+                        <div class="flex items-center space-x-2">
+                            <h3 class="font-medium w-16">抖音</h3>
+                            <p class="text-sm text-secondary w-48">hukaoyhzj</p>
+                            <a href="https://www.douyin.com/user/hukaoyhzj" target="_blank" class="text-primary hover:underline text-sm">访问主页</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center py-3 border-b-[5px] border-dark/80">
+                    <div class="flex items-center space-x-4">
+                        <div class="text-2xl w-10">📚</div>
+                        <div class="flex items-center space-x-2">
+                            <h3 class="font-medium w-16">小红书</h3>
+                            <p class="text-sm text-secondary w-48">hello2049</p>
+                            <a href="https://www.xiaohongshu.com/user/profile/hello2049" target="_blank" class="text-primary hover:underline text-sm">访问主页</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center py-3 border-b-[5px] border-dark/80">
+                    <div class="flex items-center space-x-4">
+                        <div class="text-2xl w-10">📞</div>
+                        <div class="flex items-center space-x-2">
+                            <h3 class="font-medium w-16">电话</h3>
+                            <p class="text-sm text-secondary w-48">未更新</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center py-3 border-b-[5px] border-dark/80">
+                    <div class="flex items-center space-x-4">
+                        <div class="text-2xl w-10">📧</div>
+                        <div class="flex items-center space-x-2">
+                            <h3 class="font-medium w-16">Email</h3>
+                            <p class="text-sm text-secondary w-48">1489338808@qq.com</p>
+                            <a href="mailto:1489338808@qq.com" target="_blank" class="text-primary hover:underline text-sm">发送邮件</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center py-3 border-b-[5px] border-dark/80">
+                    <div class="flex items-center space-x-4">
+                        <div class="text-2xl w-10">🌐</div>
+                        <div class="flex items-center space-x-2">
+                            <h3 class="font-medium w-16">个人网站</h3>
+                            <p class="text-sm text-secondary w-48">rongxyz.xyz</p>
+                            <a href="https://rongxyz.xyz" target="_blank" class="text-primary hover:underline text-sm">访问网站</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
