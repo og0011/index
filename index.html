@@ -1,301 +1,848 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>个人网站收藏夹</title>
-    <link rel="icon" href="https://p11-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/e102a1574c3244b1a9b99405748b2dc7~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=20260315010906DAE34B943E1AD4A9576A&rrcfp=f06b921b&x-expires=1776100173&x-signature=Iw%2FTGbhu3cUcgEu0pkKPuog6Hlk%3D" type="image/png">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>RongXingShiKe | AI小工具集合</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#3b82f6',
-                        secondary: '#64748b',
-                        dark: '#1e293b',
-                        darker: '#0f172a',
-                        light: '#f1f5f9',
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
-                    },
-                    boxShadow: {
-                        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-                        'card-hover': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
-                    }
-                }
+    <style>
+        /* 全局重置与基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', 'Inter', -apple-system, sans-serif;
+            color: #333;
+            line-height: 1.7;
+            min-height: 100vh;
+            background: #F6F8FA; /* 整体背景色 */
+        }
+
+        /* 头部优化 */
+        header {       
+        /* 添加背景图片 */
+        background-image: url('zhaopian.jpg'); /* 替换为你的图片URL */
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(78, 110, 129, 0.15);
+            margin-bottom: 2rem;
+            animation: fadeInDown 1s ease;
+        
+        /* 添加半透明遮罩层，提高文字可读性 */
+        position: relative;
+        z-index: 1;
+    }
+    
+    /* 添加遮罩层 */
+    header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4); /* 调整透明度 */
+        z-index: -1;
+    }
+    
+    /* 调整文字颜色，确保在图片上清晰可见 */
+    header h1, header h3 {
+        color: white;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* 添加文字阴影 */
+    }
+    
+    /* 如果需要调整标题渐变文字效果 */
+    header h1 {
+        background: none;
+        -webkit-background-clip: initial;
+        -webkit-text-fill-color: initial;
+    }
+
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #FFFFFF 0%, #F9DBBB 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header h3 {
+            font-weight: 300;
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* 导航栏优化（含毛玻璃效果） */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            -webkit-backdrop-filter: blur(15px);
+            backdrop-filter: blur(15px);
+            padding: 1rem 0;
+            box-shadow: 0 2px 15px rgba(78, 110, 129, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 0.8rem 0; /* 滚动后缩小 */
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        nav ul li a {
+            color: #4E6E81;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        nav ul li a:hover,
+        nav ul li a:target {
+            background-color: #F9DBBB;
+            color: #FF8400;
+            transform: translateY(-1px);
+        }
+
+        /* 容器卡片优化 */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 2.5rem auto;
+            padding: 2.5rem 2rem;
+            background: #FDFDFD;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(78, 110, 129, 0.08);
+            transition: transform 0.3s ease;
+            scroll-margin-top: 80px;
+        }
+
+        .container:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px rgba(78, 110, 129, 0.12);
+        }
+
+        .container h2 {
+            color: #2D2B38;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 3px solid #FF8400;
+            display: inline-block;
+            font-size: 1.6rem;
+            background: linear-gradient(135deg, #4E6E81 0%, #2D2B38 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .container h2::before {
+            content: "〽️";
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .container p {
+            color: #555;
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* 按钮组优化 */
+        .button-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            color: #333;
+            background-color: #FFFFFF;
+            padding: 1.2rem 1.5rem;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(78, 110, 129, 0.05);
+            font-weight: 500;
+            border-left: 4px solid #FF8400; /* 左侧强调色 */
+            gap: 0.8rem;
+        }
+
+        .btn::before {
+            content: "⚪";
+            font-size: 1.1rem;
+        }
+
+        .btn:hover {
+            background-color: #FFF8F0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(78, 110, 129, 0.1);
+            color: #FF8400;
+        }
+        .btn:hover::before {
+            content: "🔘   ";
+        }
+
+        .btn:active {
+            background-color: #FFE4B5;
+            color: #FF6347;
+            transform: scale(0.98);
+        }
+
+        .btn:active::before {
+            color: #FF6347;
+        }
+
+        /* 页脚优化 */
+        footer {
+            background: linear-gradient(135deg, #4E6E81 20%, #6A8A9C 100%);
+            color: rgba(255, 255, 255, 0.9);
+            text-align: center;
+            padding: 1.2rem 1rem;
+            margin-top: 3rem;
+            box-shadow: 0 -4px 20px rgba(78, 110, 129, 0.1);
+            font-size: 0.9rem;
+        }
+
+        /* 联系方式列表 */
+        .contact-info {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .contact-info li {
+            margin: 1rem 0;
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .contact-info li a {
+            color: #4E6E81;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-info li a:hover {
+            color: #FF8400;
+            text-decoration: underline;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 2rem 1.5rem;
+            }
+
+            .btn {
+                padding: 1rem 1.2rem;
+                font-size: 0.95rem;
+            }
+
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            nav ul li a {
+                padding: 0.4rem 1rem;
+                font-size: 0.85rem;
             }
         }
-    </script>
-    <style type="text/tailwindcss">
-        @layer utilities {
-            .glass-effect {
-                @apply bg-white/10 backdrop-blur-lg border border-white/20;
-            }
-            .card-hover {
-                @apply transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1;
-            }
-            .category-active {
-                @apply bg-primary text-white;
-            }
-            .category-inactive {
-                @apply bg-dark text-secondary hover:bg-dark/80;
-            }
+
+        /* 新增的收藏功能样式 */
+        .bookmark-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 2.5rem auto;
+            padding: 2.5rem 2rem;
+            background: #FDFDFD;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(78, 110, 129, 0.08);
+            scroll-margin-top: 80px;
+        }
+
+        .bookmark-container h2 {
+            color: #2D2B38;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 3px solid #FF8400;
+            display: inline-block;
+            font-size: 1.6rem;
+            background: linear-gradient(135deg, #4E6E81 0%, #2D2B38 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bookmark-container h2::before {
+            content: "⭐";
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        /* 搜索框样式 */
+        .search-bar {
+            margin-bottom: 2rem;
+            position: relative;
+            max-width: 600px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            border: 1px solid #E1E5E8;
+            background: #FFFFFF;
+            font-size: 1rem;
+            box-shadow: 0 2px 10px rgba(78, 110, 129, 0.05);
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            border-color: #FF8400;
+            box-shadow: 0 0 0 3px rgba(255, 132, 0, 0.1);
+        }
+
+        .add-btn {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #FF8400;
+            color: white;
+            border: none;
+            padding: 0.7rem 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .add-btn:hover {
+            background-color: #FF6347;
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        /* 分类标签样式 */
+        .category-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .category-btn {
+            padding: 0.7rem 1.5rem;
+            border-radius: 20px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            background-color: #F6F8FA;
+            color: #4E6E81;
+        }
+
+        .category-active {
+            background-color: #FF8400;
+            color: white;
+        }
+
+        .category-inactive:hover {
+            background-color: #F9DBBB;
+            color: #FF8400;
+            transform: translateY(-2px);
+        }
+
+        /* 网站卡片样式 */
+        .website-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .website-card {
+            background: #FFFFFF;
+            border-radius: 12px;
+            padding: 1.2rem 1.5rem;
+            box-shadow: 0 2px 10px rgba(78, 110, 129, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            border-left: 4px solid #FF8400;
+            cursor: pointer;
+        }
+
+        .website-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 15px rgba(78, 110, 129, 0.1);
+            background-color: #FFF8F0;
+        }
+
+        .website-card h3 {
+            color: #333;
+            font-size: 1rem;
+            font-weight: 500;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .website-card:hover h3 {
+            color: #FF8400;
+            transform: scale(1.05);
+        }
+
+        .delete-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            color: #999;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+
+        .website-card:hover .delete-btn {
+            opacity: 1;
+        }
+
+        .delete-btn:hover {
+            color: #FF6347;
+        }
+
+        /* 空状态样式 */
+        .empty-state {
+            text-align: center;
+            padding: 4rem 0;
+            color: #999;
+        }
+
+        .empty-state i {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: #DDD;
+        }
+
+        .empty-state h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #666;
+        }
+
+        /* 模态框样式 */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+            display: none;
+        }
+
+        .modal {
+            background: #FDFDFD;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 500px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .modal h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #2D2B38;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #999;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: #FF6347;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #4E6E81;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            border: 1px solid #E1E5E8;
+            background: #FFFFFF;
+            font-size: 1rem;
+            box-shadow: 0 2px 5px rgba(78, 110, 129, 0.05);
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #FF8400;
+            box-shadow: 0 0 0 3px rgba(255, 132, 0, 0.1);
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn-secondary {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            border: none;
+            background: #F6F8FA;
+            color: #4E6E81;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: #E1E5E8;
+        }
+
+        .btn-primary {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            border: none;
+            background: #FF8400;
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: #FF6347;
+        }
+
+        /* 确认对话框样式 */
+        .confirm-dialog {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+            display: none;
+        }
+
+        .confirm-content {
+            background: #FDFDFD;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 400px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .confirm-content i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #FF8400;
+        }
+
+        .confirm-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #2D2B38;
+        }
+
+        .confirm-content p {
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .confirm-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        /* 通知样式 */
+        .notification {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            color: white;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateX(120%);
+            transition: transform 0.3s ease;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification-success {
+            background-color: #28a745;
+        }
+
+        .notification-error {
+            background-color: #dc3545;
         }
     </style>
 </head>
-<body class="bg-gradient-to-br from-darker to-dark min-h-screen text-light p-4 md:p-8">
-    <div class="max-w-6xl mx-auto">
-        <!-- Header -->
-        <header class="mb-8 text-center">
-            <h1 class="text-4xl font-bold mb-2 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-                我的网站收藏夹
-            </h1>
-            <p class="text-secondary">整理你常用的网站，让访问更高效</p>
-        </header>
 
-        <!-- Search Bar -->
-        <div class="mb-8">
-            <div class="relative max-w-2xl mx-auto">
-                <input 
-                    type="text" 
-                    id="searchInput"
-                    placeholder="搜索收藏的网站..." 
-                    class="w-full px-6 py-4 rounded-xl glass-effect focus:outline-none focus:ring-2 focus:ring-primary"
-                >
-                <button id="addSiteBtn" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-primary hover:bg-primary/80 text-white px-4 py-2 rounded-lg transition-colors">
-                    <i class="fa fa-plus mr-2"></i>添加
-                </button>
-            </div>
+<body>
+    <header>
+        <h1>RonG XinG ShiKe</h1>
+        <h3>AI小工具 & 实用资源集合</h3>
+    </header>
+
+    <nav id="nav">
+        <ul>
+            <li><a href="#other-sites">更多网站</a></li>
+            <li><a href="#ai-tools">AI工具</a></li>
+            <li><a href="#other-tools">辅助工具</a></li>
+            <li><a href="#bookmarks">我的收藏</a></li>
+            <li><a href="#contact">与我联系</a></li>
+        </ul>
+    </nav>
+
+    <div class="container" id="other-sites">
+        <h2>更多网站</h2>
+        <p>这里是一些我觉得比较有趣的网站工具</p>
+        <div class="button-group">
+            <a href="https://www.ilovepdf.com/zh-cn/html-to-pdf" class="btn" target="_blank"> HTML转PDF</a>
+            <a href="https://www.wpzysq.com/" class="btn" target="_blank"> 网盘资源社</a>
+            <a href="https://test.ustc.edu.cn//" class="btn" target="_blank"> 科大测速</a>
+            <a href="https://www.xtdowner.com/video/douyin//" class="btn" target="_blank"> 抖音下载</a>
+            <a href="https://cn.piliapp.com/random/wheel/" class="btn" target="_blank"> 抽签转盘</a>
+            <a href="https://www.emojiall.com/zh-hans" class="btn" target="_blank">Emoji百宝箱</a>
+            <a href="https://www.deepl.com/zh/translator" class="btn" target="_blank"> 在线翻译</a>
+            <a href="https://blackace.app" class="btn" target="_blank"> app打包</a>
+            <a href="https://github.com/" class="btn" target="_blank"> github</a>
+            <a href="https://og0011.github.io/xkl/" class="btn" target="_blank"> 恐龙跳跃</a>
+        </div>
+    </div>
+
+    <div class="container" id="ai-tools">
+        <h2>AI工具</h2>
+        <p>这是我收藏的一些很有意思的AI工具</p>
+        <div class="button-group">
+            <a href="https://kimi.moonshot.cn/" class="btn" target="_blank"> KIMI</a>
+            <a href="https://www.doubao.com/chat/" class="btn" target="_blank">豆包</a>
+            <a href="https://www.coze.cn" class="btn" target="_blank">扣子</a>
+            <a href="https://yuanbao.tencent.com/discovery" class="btn" target="_blank">腾讯元宝</a>
+            <a href="https://console.bce.baidu.com/miaoda/design" class="btn" target="_blank">秒哒</a>
+            <a href="https://tongyi.aliyun.com/wanxiang/videoCreation" class="btn" target="_blank">通义万相</a>
+            <a href="https://yiyan.baidu.com/" class="btn" target="_blank">文心一言</a>
+            <a href="https://www.haimian.com/?utm_source=ai-bot.cn" class="btn" target="_blank">海绵音乐</a>
+        </div>
+    </div>
+
+    <div class="container" id="other-tools">
+        <h2>辅助工具</h2>
+        <p>这些工具不经常使用</p>
+        <div class="button-group">
+            <a href="https://vtool.pro/handwriting/" class="btn" target="_blank"> 手写文稿</a>
+            <a href="https://www.west.cn/login.asp?pageStr=/manager/domain/Default.asp" class="btn" target="_blank">西部数据</a>
+            <a href="https://www.netlify.com/" class="btn" target="_blank"> Netlify</a>
+            <a href="https://account.mongodb.com/account/login?nds=true" class="btn" target="_blank">🍃 MongoDB</a>
+            <a href="http://rongxyz.xyz/" class="btn" target="_blank">正在开发</a>
+        </div>
+    </div>
+
+    <!-- 新增的收藏功能模块 -->
+    <div class="bookmark-container" id="bookmarks">
+        <h2>我的收藏</h2>
+        <p>管理你自己收藏的网站，让访问更高效</p>
+
+        <!-- 搜索栏 -->
+        <div class="search-bar">
+            <input type="text" id="searchInput" class="search-input" placeholder="搜索收藏的网站...">
+            <button id="addSiteBtn" class="add-btn">
+                <i class="fa fa-plus"></i> 添加网站
+            </button>
         </div>
 
-        <!-- Category Tabs -->
-        <div class="flex flex-wrap justify-center gap-3 mb-8">
-            <div id="categoryContainer" class="flex flex-wrap justify-center gap-3">
-                <button class="category-btn category-active px-6 py-3 rounded-lg transition-colors" data-category="all">
-                    全部
-                </button>
-                <button class="category-btn category-inactive px-6 py-3 rounded-lg transition-colors relative group" data-category="工具">
-                    工具
-                    <button class="absolute -top-2 -right-2 text-red-500 hover:text-red-400 opacity-0 group-hover:opacity-100 transition-opacity"
-                            onclick="event.stopPropagation(); showDeleteCategoryConfirm('工具')">
-                        <i class="fa fa-times-circle"></i>
-                    </button>
-                </button>
-                <button class="category-btn category-inactive px-6 py-3 rounded-lg transition-colors relative group" data-category="学习">
-                    学习
-                    <button class="absolute -top-2 -right-2 text-red-500 hover:text-red-400 opacity-0 group-hover:opacity-100 transition-opacity"
-                            onclick="event.stopPropagation(); showDeleteCategoryConfirm('学习')">
-                        <i class="fa fa-times-circle"></i>
-                    </button>
-                </button>
-                <button class="category-btn category-inactive px-6 py-3 rounded-lg transition-colors relative group" data-category="娱乐">
-                    娱乐
-                    <button class="absolute -top-2 -right-2 text-red-500 hover:text-red-400 opacity-0 group-hover:opacity-100 transition-opacity"
-                            onclick="event.stopPropagation(); showDeleteCategoryConfirm('娱乐')">
-                        <i class="fa fa-times-circle"></i>
-                    </button>
-                </button>
-                <button class="category-btn category-inactive px-6 py-3 rounded-lg transition-colors relative group" data-category="社交">
-                    社交
-                    <button class="absolute -top-2 -right-2 text-red-500 hover:text-red-400 opacity-0 group-hover:opacity-100 transition-opacity"
-                            onclick="event.stopPropagation(); showDeleteCategoryConfirm('社交')">
-                        <i class="fa fa-times-circle"></i>
-                    </button>
-                </button>
-                <button class="category-btn category-inactive px-6 py-3 rounded-lg transition-colors relative group" data-category="资讯">
-                    资讯
-                    <button class="absolute -top-2 -right-2 text-red-500 hover:text-red-400 opacity-0 group-hover:opacity-100 transition-opacity"
-                            onclick="event.stopPropagation(); showDeleteCategoryConfirm('资讯')">
-                        <i class="fa fa-times-circle"></i>
-                    </button>
-                </button>
-                <button id="addCategoryBtn" class="category-btn category-inactive px-6 py-3 rounded-lg transition-colors" data-category="add">
-                    <i class="fa fa-plus mr-2"></i>添加分类
-                </button>
-            </div>
+        <!-- 分类标签 -->
+        <div class="category-tabs" id="categoryContainer">
+            <button class="category-btn category-active" data-category="all">全部</button>
+            <button class="category-btn category-inactive" id="addCategoryBtn" data-category="add">
+                <i class="fa fa-plus"></i> 添加分类
+            </button>
         </div>
 
-        <!-- Website Grid -->
-        <div id="websiteGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-            <!-- Websites will be dynamically added here -->
+        <!-- 网站网格 -->
+        <div id="websiteGrid" class="website-grid">
+            <!-- 动态生成的网站卡片 -->
         </div>
 
-        <!-- Empty State -->
-        <div id="emptyState" class="hidden text-center py-16">
-            <div class="text-6xl mb-4 opacity-50">📁</div>
-            <h3 class="text-xl font-semibold mb-2">还没有收藏的网站</h3>
-            <p class="text-secondary mb-6">点击"添加"按钮开始收藏你的第一个网站</p>
-            <button id="emptyAddBtn" class="bg-primary hover:bg-primary/80 text-white px-6 py-3 rounded-lg transition-colors">
-                <i class="fa fa-plus mr-2"></i>添加网站
+        <!-- 空状态 -->
+        <div id="emptyState" class="empty-state hidden">
+            <i class="fa fa-folder-open"></i>
+            <h3>还没有收藏的网站</h3>
+            <p>点击"添加"按钮开始收藏你的第一个网站</p>
+            <button id="emptyAddBtn" class="btn-primary" style="margin-top: 1rem;">
+                <i class="fa fa-plus"></i> 添加网站
             </button>
         </div>
     </div>
 
-    <!-- Confirm Dialog -->
-    <div id="confirmDialog" class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden items-center justify-center z-50">
-        <div class="bg-dark p-8 rounded-2xl max-w-md w-full mx-4 glass-effect text-center">
-            <div class="text-4xl mb-4">⚠️</div>
-            <h3 id="confirmTitle" class="text-xl font-bold mb-3">确认操作</h3>
-            <p id="confirmMessage" class="text-secondary mb-6">您确定要执行此操作吗？</p>
-            <div class="flex gap-3">
-                <button id="confirmCancelBtn" class="flex-1 px-6 py-3 rounded-lg bg-dark hover:bg-dark/80 transition-colors">
-                    取消
-                </button>
-                <button id="confirmOkBtn" class="flex-1 px-6 py-3 rounded-lg bg-red-500 hover:bg-red-600 text-white transition-colors">
-                    确认删除
-                </button>
-            </div>
-        </div>
+    <div class="container" id="contact">
+        <h2>与我联系</h2>
+        <p>如果你对我的内容感兴趣，或者有任何问题，欢迎通过以下方式联系我：</p>
+        <ul class="contact-info">
+            <li>🎵 抖音 ：<a href="https://v.douyin.com/Im6Ta9YGCRw/ 7@9.com :8pm" target="_blank">hukaoyhzj</a></li>
+            <li>📚 小红书：<a href="https://www.xiaohongshu.com/user/profile/62306b5e00000000210272cc?xsec_token=YB7Rc__fGKZP3O1_PhKRpNvghPwR3lli7l2LW3Ha5JJL0%3D&xsec_source=app_share&xhsshare=CopyLink&appuid=62306b5e00000000210272cc&apptime=1742904317&share_id=aaa87ffcf83343a09cd732c8101dd0e5&share_channel=copy_link" target="_blank">hello2049</a></li>
+            <li>📞 电话：未更新</li>
+            <li>📧 Email: 1489338808@qq.com</li>
+            <li>🌐 个人网站: rongxyz.xyz（正在开发）</li>
+        </ul>
     </div>
 
-    <!-- Add Category Modal -->
-    <div id="addCategoryModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden items-center justify-center z-50">
-        <div class="bg-dark p-8 rounded-2xl max-w-md w-full mx-4 glass-effect">
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="text-2xl font-bold">添加分类</h3>
-                <button id="closeCategoryModalBtn" class="text-secondary hover:text-light text-2xl">
-                    <i class="fa fa-times"></i>
-                </button>
-            </div>
-            
-            <form id="addCategoryForm" class="space-y-4">
-                <div>
-                    <label class="block text-sm font-medium mb-2">分类名称</label>
-                    <input type="text" id="categoryName" required class="w-full px-4 py-3 rounded-lg glass-effect focus:outline-none focus:ring-2 focus:ring-primary" placeholder="请输入分类名称">
-                </div>
-                
-                <div class="flex gap-3 pt-4">
-                    <button type="button" id="cancelAddCategoryBtn" class="flex-1 px-6 py-3 rounded-lg bg-dark hover:bg-dark/80 transition-colors">
-                        取消
-                    </button>
-                    <button type="submit" class="flex-1 px-6 py-3 rounded-lg bg-primary hover:bg-primary/80 text-white transition-colors">
-                        添加
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
+    <footer>
+        <p>© 2025 RongXingShiKe. 所有内容仅供学习交流使用</p>
+    </footer>
 
-    <!-- Add Website Modal -->
-    <div id="addModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden items-center justify-center z-50">
-        <div class="bg-dark p-8 rounded-2xl max-w-md w-full mx-4 glass-effect">
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="text-2xl font-bold">添加网站</h3>
-                <button id="closeModalBtn" class="text-secondary hover:text-light text-2xl">
-                    <i class="fa fa-times"></i>
-                </button>
-            </div>
-            
-            <form id="addSiteForm" class="space-y-4">
-                <div>
-                    <label class="block text-sm font-medium mb-2">网站名称</label>
-                    <input type="text" id="siteName" required class="w-full px-4 py-3 rounded-lg glass-effect focus:outline-none focus:ring-2 focus:ring-primary">
+    <!-- 添加网站模态框 -->
+    <div id="addModal" class="modal-overlay">
+        <div class="modal">
+            <button id="closeModalBtn" class="modal-close">
+                <i class="fa fa-times"></i>
+            </button>
+            <h3>添加网站</h3>
+            <form id="addSiteForm">
+                <div class="form-group">
+                    <label for="siteName">网站名称</label>
+                    <input type="text" id="siteName" class="form-control" required>
                 </div>
-                
-                <div>
-                    <label class="block text-sm font-medium mb-2">网站地址</label>
-                    <input type="url" id="siteUrl" required class="w-full px-4 py-3 rounded-lg glass-effect focus:outline-none focus:ring-2 focus:ring-primary">
+                <div class="form-group">
+                    <label for="siteUrl">网站地址</label>
+                    <input type="url" id="siteUrl" class="form-control" required>
                 </div>
-                
-                <div>
-                    <label class="block text-sm font-medium mb-2">分类</label>
-                    <select id="siteCategory" required class="w-full px-4 py-3 rounded-lg glass-effect focus:outline-none focus:ring-2 focus:ring-primary text-light bg-dark/80">
-                        <option value="" class="bg-dark text-light">请选择分类</option>
-                        <option value="工具" class="bg-dark text-light">工具</option>
-                        <option value="学习" class="bg-dark text-light">学习</option>
-                        <option value="娱乐" class="bg-dark text-light">娱乐</option>
-                        <option value="社交" class="bg-dark text-light">社交</option>
-                        <option value="资讯" class="bg-dark text-light">资讯</option>
+                <div class="form-group">
+                    <label for="siteCategory">分类</label>
+                    <select id="siteCategory" class="form-control" required>
+                        <option value="">请选择分类</option>
                     </select>
                 </div>
-                
-
-                
-                <div class="flex gap-3 pt-4">
-                    <button type="button" id="cancelAddBtn" class="flex-1 px-6 py-3 rounded-lg bg-dark hover:bg-dark/80 transition-colors">
-                        取消
-                    </button>
-                    <button type="submit" class="flex-1 px-6 py-3 rounded-lg bg-primary hover:bg-primary/80 text-white transition-colors">
-                        添加
-                    </button>
+                <div class="form-actions">
+                    <button type="button" id="cancelAddBtn" class="btn-secondary">取消</button>
+                    <button type="submit" class="btn-primary">添加</button>
                 </div>
             </form>
+        </div>
+    </div>
+
+    <!-- 添加分类模态框 -->
+    <div id="addCategoryModal" class="modal-overlay">
+        <div class="modal">
+            <button id="closeCategoryModalBtn" class="modal-close">
+                <i class="fa fa-times"></i>
+            </button>
+            <h3>添加分类</h3>
+            <form id="addCategoryForm">
+                <div class="form-group">
+                    <label for="categoryName">分类名称</label>
+                    <input type="text" id="categoryName" class="form-control" required placeholder="请输入分类名称">
+                </div>
+                <div class="form-actions">
+                    <button type="button" id="cancelAddCategoryBtn" class="btn-secondary">取消</button>
+                    <button type="submit" class="btn-primary">添加</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 确认对话框 -->
+    <div id="confirmDialog" class="confirm-dialog">
+        <div class="confirm-content">
+            <i class="fa fa-exclamation-triangle"></i>
+            <h3 id="confirmTitle">确认操作</h3>
+            <p id="confirmMessage">您确定要执行此操作吗？</p>
+            <div class="confirm-actions">
+                <button id="confirmCancelBtn" class="btn-secondary">取消</button>
+                <button id="confirmOkBtn" class="btn-primary">确认删除</button>
+            </div>
         </div>
     </div>
 
     <script>
-        // Sample data
-        const sampleWebsites = [
-            {
-                id: 1,
-                name: 'GitHub',
-                url: 'https://github.com',
-                category: '工具',
-                tags: ['代码', '开发', '版本控制'],
-                icon: 'fa-github'
-            },
-            {
-                id: 2,
-                name: 'MDN Web Docs',
-                url: 'https://developer.mozilla.org',
-                category: '学习',
-                tags: ['编程', '文档', '前端'],
-                icon: 'fa-code'
-            },
-            {
-                id: 3,
-                name: 'YouTube',
-                url: 'https://youtube.com',
-                category: '娱乐',
-                tags: ['视频', '音乐', '教程'],
-                icon: 'fa-youtube-play'
-            },
-            {
-                id: 4,
-                name: 'Twitter',
-                url: 'https://twitter.com',
-                category: '社交',
-                tags: ['社交媒体', '新闻', '交流'],
-                icon: 'fa-twitter'
-            },
-            {
-                id: 5,
-                name: 'Stack Overflow',
-                url: 'https://stackoverflow.com',
-                category: '工具',
-                tags: ['编程', '问答', '帮助'],
-                icon: 'fa-stack-overflow'
-            },
-            {
-                id: 6,
-                name: 'Reddit',
-                url: 'https://reddit.com',
-                category: '社交',
-                tags: ['论坛', '社区', '讨论'],
-                icon: 'fa-reddit'
-            },
-            {
-                id: 7,
-                name: 'Google',
-                url: 'https://google.com',
-                category: '工具',
-                tags: ['搜索', '引擎'],
-                icon: 'fa-google'
-            },
-            {
-                id: 8,
-                name: 'CNN',
-                url: 'https://cnn.com',
-                category: '资讯',
-                tags: ['新闻', '国际', '时事'],
-                icon: 'fa-newspaper-o'
+        // 导航栏滚动动画
+        window.addEventListener('scroll', function () {
+            const nav = document.getElementById('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
             }
-        ];
+        });
 
-        // DOM Elements
+        // 收藏功能核心代码
+        // 初始数据
+        let websites = JSON.parse(localStorage.getItem('bookmarkWebsites')) || [];
+        let categories = JSON.parse(localStorage.getItem('bookmarkCategories')) || ['各类网站', 'AI工具', '辅助工具', '其他网站'];
+        let currentCategory = 'all';
+        let searchTerm = '';
+        let confirmCallback = null;
+
+        // DOM元素
         const websiteGrid = document.getElementById('websiteGrid');
         const emptyState = document.getElementById('emptyState');
         const searchInput = document.getElementById('searchInput');
@@ -317,31 +864,25 @@
         const cancelAddCategoryBtn = document.getElementById('cancelAddCategoryBtn');
         const addCategoryForm = document.getElementById('addCategoryForm');
         const categoryNameInput = document.getElementById('categoryName');
+        const siteCategorySelect = document.getElementById('siteCategory');
 
-        // State
-        let websites = JSON.parse(localStorage.getItem('bookmarkWebsites')) || sampleWebsites;
-        let categories = JSON.parse(localStorage.getItem('bookmarkCategories')) || ['工具', '学习', '娱乐', '社交', '资讯'];
-        let currentCategory = 'all';
-        let searchTerm = '';
-        let confirmCallback = null;
-
-        // Initialize
-        function init() {
+        // 初始化
+        function initBookmarks() {
             renderCategories();
             updateCategorySelect();
             renderWebsites();
-            setupEventListeners();
+            setupBookmarkEventListeners();
             saveToLocalStorage();
             saveCategoriesToLocalStorage();
         }
 
-        // Render websites
+        // 渲染网站列表
         function renderWebsites() {
             const filteredWebsites = websites.filter(site => {
                 const matchesCategory = currentCategory === 'all' || site.category === currentCategory;
                 const matchesSearch = searchTerm === '' || 
                     site.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                    site.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
+                    (site.tags && site.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase())));
                 return matchesCategory && matchesSearch;
             });
 
@@ -353,11 +894,9 @@
                 emptyState.classList.add('hidden');
                 
                 websiteGrid.innerHTML = filteredWebsites.map(site => `
-                    <div class="website-card glass-effect rounded-xl p-4 card-hover relative group bg-gradient-to-br from-dark/80 to-dark/40 border border-dark/80 hover:border-primary/30 backdrop-blur-sm" 
-                         onclick="window.open('${site.url}', '_blank')">
-                        <h3 class="text-center font-medium truncate transition-all duration-500 ease-out hover:text-primary hover:scale-110 hover:-rotate-12" style="transform-origin: center;">${site.name}</h3>
-                        <button class="absolute top-2 right-2 text-secondary hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity z-10"
-                                onclick="event.stopPropagation(); deleteWebsite(${site.id})">
+                    <div class="website-card" onclick="window.open('${site.url}', '_blank')">
+                        <h3>${site.name}</h3>
+                        <button class="delete-btn" onclick="event.stopPropagation(); deleteWebsite(${site.id})">
                             <i class="fa fa-trash"></i>
                         </button>
                     </div>
@@ -365,10 +904,9 @@
             }
         }
 
-        // Setup event listeners
-        function setupEventListeners() {
-            // Search
-            // Add debounced search
+        // 设置事件监听
+        function setupBookmarkEventListeners() {
+            // 搜索功能（防抖）
             let searchTimeout;
             searchInput.addEventListener('input', (e) => {
                 clearTimeout(searchTimeout);
@@ -378,24 +916,22 @@
                 }, 300);
             });
 
-            // Add category button
+            // 添加分类按钮
             addCategoryBtn.addEventListener('click', openAddCategoryModal);
 
-            // Add category modal controls
+            // 添加分类模态框控制
             closeCategoryModalBtn.addEventListener('click', closeAddCategoryModal);
             cancelAddCategoryBtn.addEventListener('click', closeAddCategoryModal);
-            
-            // Close add category modal when clicking outside
             addCategoryModal.addEventListener('click', (e) => {
                 if (e.target === addCategoryModal) {
                     closeAddCategoryModal();
                 }
             });
 
-            // Add category form
+            // 添加分类表单提交
             addCategoryForm.addEventListener('submit', handleAddCategory);
 
-            // Confirm dialog
+            // 确认对话框控制
             confirmOkBtn.addEventListener('click', () => {
                 if (confirmCallback) {
                     confirmCallback();
@@ -404,73 +940,64 @@
             });
 
             confirmCancelBtn.addEventListener('click', closeConfirmDialog);
-            
-            // Close confirm dialog when clicking outside
             confirmDialog.addEventListener('click', (e) => {
                 if (e.target === confirmDialog) {
                     closeConfirmDialog();
                 }
             });
 
-            // Modal controls
+            // 添加网站模态框控制
             addSiteBtn.addEventListener('click', openModal);
             emptyAddBtn.addEventListener('click', openModal);
             closeModalBtn.addEventListener('click', closeModal);
             cancelAddBtn.addEventListener('click', closeModal);
-            
-            // Close modal when clicking outside
             addModal.addEventListener('click', (e) => {
                 if (e.target === addModal) {
                     closeModal();
                 }
             });
 
-            // Add site form
+            // 添加网站表单提交
             addSiteForm.addEventListener('submit', handleAddSite);
         }
 
-        // Modal functions
+        // 打开添加网站模态框
         function openModal() {
-            addModal.classList.remove('hidden');
-            addModal.classList.add('flex');
+            addModal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
 
+        // 关闭添加网站模态框
         function closeModal() {
-            addModal.classList.add('hidden');
-            addModal.classList.remove('flex');
+            addModal.style.display = 'none';
             document.body.style.overflow = 'auto';
             addSiteForm.reset();
         }
 
-        // Handle add site
+        // 处理添加网站
         function handleAddSite(e) {
             e.preventDefault();
             
             const name = document.getElementById('siteName').value;
             const url = document.getElementById('siteUrl').value;
             const category = document.getElementById('siteCategory').value;
-            const tags = [];
 
             const newSite = {
                 id: Date.now(),
                 name,
                 url: url.startsWith('http') ? url : 'https://' + url,
                 category,
-                tags: tags.length > 0 ? tags : ['未分类'],
-                icon: getIconForCategory(category)
+                tags: ['未分类']
             };
 
             websites.push(newSite);
             saveToLocalStorage();
             renderWebsites();
             closeModal();
-
-            // Show success notification
             showNotification('网站添加成功！', 'success');
         }
 
-        // Delete website
+        // 删除网站
         function deleteWebsite(id) {
             const website = websites.find(site => site.id === id);
             if (website) {
@@ -487,84 +1014,37 @@
             }
         }
 
-        // Show delete category confirm
-        function showDeleteCategoryConfirm(categoryName) {
-            const sitesInCategory = websites.filter(site => site.category === categoryName).length;
-            let message = `确定要删除分类 "${categoryName}" 吗？`;
-            
-            if (sitesInCategory > 0) {
-                message += `\n该分类下还有 ${sitesInCategory} 个网站，删除后这些网站将被移至"未分类"。`;
-            }
-            
-            showConfirmDialog(
-                '删除分类',
-                message,
-                () => {
-                    // Move sites to "未分类"
-                    websites.forEach(site => {
-                        if (site.category === categoryName) {
-                            site.category = '未分类';
-                        }
-                    });
-                    
-                    // Remove category
-                    categories = categories.filter(cat => cat !== categoryName);
-                    
-                    // Save changes
-                    saveToLocalStorage();
-                    saveCategoriesToLocalStorage();
-                    
-                    // Update UI
-                    renderCategories();
-                    updateCategorySelect();
-                    renderWebsites();
-                    
-                    // Switch to all category if current category was deleted
-                    if (currentCategory === categoryName) {
-                        currentCategory = 'all';
-                        updateCategoryButtons();
-                    }
-                    
-                    showNotification('分类已删除', 'success');
-                }
-            );
-        }
-
-        // Show confirm dialog
+        // 显示确认对话框
         function showConfirmDialog(title, message, callback) {
             confirmTitle.textContent = title;
             confirmMessage.textContent = message;
             confirmCallback = callback;
-            confirmDialog.classList.remove('hidden');
-            confirmDialog.classList.add('flex');
+            confirmDialog.style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
 
-        // Close confirm dialog
+        // 关闭确认对话框
         function closeConfirmDialog() {
-            confirmDialog.classList.add('hidden');
-            confirmDialog.classList.remove('flex');
+            confirmDialog.style.display = 'none';
             document.body.style.overflow = 'auto';
             confirmCallback = null;
         }
 
-        // Open add category modal
+        // 打开添加分类模态框
         function openAddCategoryModal() {
-            addCategoryModal.classList.remove('hidden');
-            addCategoryModal.classList.add('flex');
+            addCategoryModal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
             categoryNameInput.focus();
         }
 
-        // Close add category modal
+        // 关闭添加分类模态框
         function closeAddCategoryModal() {
-            addCategoryModal.classList.add('hidden');
-            addCategoryModal.classList.remove('flex');
+            addCategoryModal.style.display = 'none';
             document.body.style.overflow = 'auto';
             addCategoryForm.reset();
         }
 
-        // Handle add category
+        // 处理添加分类
         function handleAddCategory(e) {
             e.preventDefault();
             
@@ -584,25 +1064,20 @@
             }
         }
 
-        // Render categories
+        // 渲染分类标签
         function renderCategories() {
-            const categoryContainer = document.getElementById('categoryContainer');
+            // 移除现有分类按钮（保留全部和添加按钮）
             const categoryButtons = categoryContainer.querySelectorAll('.category-btn:not([data-category="all"]):not([data-category="add"])');
-            
-            // Remove existing category buttons except "all" and "add"
             categoryButtons.forEach(btn => btn.remove());
             
-            // Add category buttons
+            // 添加分类按钮
             categories.forEach(category => {
                 const categoryBtn = document.createElement('button');
-                categoryBtn.className = `category-btn px-6 py-3 rounded-lg transition-colors relative group ${currentCategory === category ? 'category-active' : 'category-inactive'}`;
+                categoryBtn.className = `category-btn ${currentCategory === category ? 'category-active' : 'category-inactive'}`;
                 categoryBtn.dataset.category = category;
                 categoryBtn.innerHTML = `
                     ${category}
-                    <button class="absolute -top-2 -right-2 text-red-500 hover:text-red-400 opacity-0 group-hover:opacity-100 transition-opacity"
-                            onclick="event.stopPropagation(); showDeleteCategoryConfirm('${category}')">
-                        <i class="fa fa-times-circle"></i>
-                    </button>
+                    <i class="fa fa-times-circle delete-category-icon" style="margin-left: 8px;" onclick="event.stopPropagation(); showDeleteCategoryConfirm('${category}')"></i>
                 `;
                 categoryBtn.addEventListener('click', () => {
                     currentCategory = category;
@@ -610,18 +1085,15 @@
                     renderWebsites();
                 });
                 
-                // Insert before add category button
+                // 插入到添加分类按钮前
                 categoryContainer.insertBefore(categoryBtn, addCategoryBtn);
             });
             
-            // Add event listener to "all" button
+            // 全部按钮事件
             const allButton = categoryContainer.querySelector('[data-category="all"]');
             if (allButton) {
-                // Remove existing event listeners
                 const newAllButton = allButton.cloneNode(true);
                 allButton.parentNode.replaceChild(newAllButton, allButton);
-                
-                // Add new event listener
                 newAllButton.addEventListener('click', () => {
                     currentCategory = 'all';
                     updateCategoryButtons();
@@ -630,150 +1102,115 @@
             }
         }
 
-        // Update category buttons
+        // 更新分类按钮状态
         function updateCategoryButtons() {
             const categoryBtns = document.querySelectorAll('.category-btn');
             categoryBtns.forEach(btn => {
                 if (btn.dataset.category === currentCategory) {
                     btn.classList.remove('category-inactive');
                     btn.classList.add('category-active');
-                } else {
+                } else if (btn.dataset.category !== 'add') {
                     btn.classList.remove('category-active');
                     btn.classList.add('category-inactive');
                 }
             });
         }
 
-        // Update category select in add modal
+        // 更新添加网站模态框中的分类下拉框
         function updateCategorySelect() {
-            const categorySelect = document.getElementById('siteCategory');
-            const existingOptions = categorySelect.querySelectorAll('option:not([value=""])');
+            const existingOptions = siteCategorySelect.querySelectorAll('option:not([value=""])');
             existingOptions.forEach(option => option.remove());
             
             categories.forEach(category => {
                 const option = document.createElement('option');
                 option.value = category;
                 option.textContent = category;
-                option.className = 'bg-dark text-light';
-                categorySelect.appendChild(option);
+                siteCategorySelect.appendChild(option);
             });
         }
 
-        // Save categories to local storage
+        // 显示删除分类确认
+        function showDeleteCategoryConfirm(categoryName) {
+            const sitesInCategory = websites.filter(site => site.category === categoryName).length;
+            let message = `确定要删除分类 "${categoryName}" 吗？`;
+            
+            if (sitesInCategory > 0) {
+                message += `\n该分类下还有 ${sitesInCategory} 个网站，删除后这些网站将被移至"未分类"。`;
+            }
+            
+            showConfirmDialog(
+                '删除分类',
+                message,
+                () => {
+                    // 将该分类下的网站移至未分类
+                    websites.forEach(site => {
+                        if (site.category === categoryName) {
+                            site.category = '未分类';
+                        }
+                    });
+                    
+                    // 删除分类
+                    categories = categories.filter(cat => cat !== categoryName);
+                    
+                    // 保存更改
+                    saveToLocalStorage();
+                    saveCategoriesToLocalStorage();
+                    
+                    // 更新UI
+                    renderCategories();
+                    updateCategorySelect();
+                    renderWebsites();
+                    
+                    // 如果当前选中的是被删除的分类，切换到全部
+                    if (currentCategory === categoryName) {
+                        currentCategory = 'all';
+                        updateCategoryButtons();
+                    }
+                    
+                    showNotification('分类已删除', 'success');
+                }
+            );
+        }
+
+        // 保存分类到本地存储
         function saveCategoriesToLocalStorage() {
             localStorage.setItem('bookmarkCategories', JSON.stringify(categories));
         }
 
-        // Get icon based on category
-        function getIconForCategory(category) {
-            const icons = {
-                '工具': 'fa-wrench',
-                '学习': 'fa-book',
-                '娱乐': 'fa-gamepad',
-                '社交': 'fa-users',
-                '资讯': 'fa-newspaper-o'
-            };
-            return icons[category] || 'fa-globe';
-        }
-
-        // Save to local storage
+        // 保存网站到本地存储
         function saveToLocalStorage() {
             localStorage.setItem('bookmarkWebsites', JSON.stringify(websites));
         }
 
-        // Show notification
+        // 显示通知
         function showNotification(message, type = 'info') {
+            // 创建通知元素
             const notification = document.createElement('div');
-            notification.className = `fixed top-4 right-4 px-6 py-3 rounded-lg z-50 transition-all transform translate-x-full opacity-0`;
-            
-            if (type === 'success') {
-                notification.classList.add('bg-green-500', 'text-white');
-            } else if (type === 'error') {
-                notification.classList.add('bg-red-500', 'text-white');
-            } else {
-                notification.classList.add('bg-primary', 'text-white');
-            }
-            
+            notification.className = `notification ${type === 'success' ? 'notification-success' : 'notification-error'}`;
             notification.textContent = message;
+            
+            // 添加到页面
             document.body.appendChild(notification);
             
-            // Show
+            // 显示通知
             setTimeout(() => {
-                notification.classList.remove('translate-x-full', 'opacity-0');
+                notification.classList.add('show');
             }, 100);
             
-            // Hide
+            // 3秒后隐藏
             setTimeout(() => {
-                notification.classList.add('translate-x-full', 'opacity-0');
+                notification.classList.remove('show');
                 setTimeout(() => {
                     document.body.removeChild(notification);
                 }, 300);
             }, 3000);
         }
 
-        // Initialize the app
-        document.addEventListener('DOMContentLoaded', init);
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            initBookmarks();
+        });
     </script>
-
-    <!-- Contact Section -->
-    <footer class="mt-16 py-8 border-t border-dark/80">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="mb-6">
-                <h2 class="text-2xl font-bold mb-2">与我联系</h2>
-                <p class="text-secondary">如果你对我的内容感兴趣，或者有任何问题，欢迎通过以下方式联系我：</p>
-            </div>
-            <div class="space-y-4 max-w-2xl">
-                <div class="flex items-center py-3 border-b-[5px] border-dark/80">
-                    <div class="flex items-center space-x-4">
-                        <div class="text-2xl w-10">🎵</div>
-                        <div class="flex items-center space-x-2">
-                            <h3 class="font-medium w-16">抖音</h3>
-                            <p class="text-sm text-secondary w-48">hukaoyhzj</p>
-                            <a href="https://www.douyin.com/user/hukaoyhzj" target="_blank" class="text-primary hover:underline text-sm">访问主页</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="flex items-center py-3 border-b-[5px] border-dark/80">
-                    <div class="flex items-center space-x-4">
-                        <div class="text-2xl w-10">📚</div>
-                        <div class="flex items-center space-x-2">
-                            <h3 class="font-medium w-16">小红书</h3>
-                            <p class="text-sm text-secondary w-48">hello2049</p>
-                            <a href="https://www.xiaohongshu.com/user/profile/hello2049" target="_blank" class="text-primary hover:underline text-sm">访问主页</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="flex items-center py-3 border-b-[5px] border-dark/80">
-                    <div class="flex items-center space-x-4">
-                        <div class="text-2xl w-10">📞</div>
-                        <div class="flex items-center space-x-2">
-                            <h3 class="font-medium w-16">电话</h3>
-                            <p class="text-sm text-secondary w-48">未更新</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="flex items-center py-3 border-b-[5px] border-dark/80">
-                    <div class="flex items-center space-x-4">
-                        <div class="text-2xl w-10">📧</div>
-                        <div class="flex items-center space-x-2">
-                            <h3 class="font-medium w-16">Email</h3>
-                            <p class="text-sm text-secondary w-48">1489338808@qq.com</p>
-                            <a href="mailto:1489338808@qq.com" target="_blank" class="text-primary hover:underline text-sm">发送邮件</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="flex items-center py-3 border-b-[5px] border-dark/80">
-                    <div class="flex items-center space-x-4">
-                        <div class="text-2xl w-10">🌐</div>
-                        <div class="flex items-center space-x-2">
-                            <h3 class="font-medium w-16">个人网站</h3>
-                            <p class="text-sm text-secondary w-48">rongxyz.xyz</p>
-                            <a href="https://rongxyz.xyz" target="_blank" class="text-primary hover:underline text-sm">访问网站</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
 </body>
+
 </html>
