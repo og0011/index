@@ -438,23 +438,50 @@
             color: #FF6347;
         }
 
-        /* 空状态样式 */
+        /* 空状态样式 - 优化版 */
         .empty-state {
             text-align: center;
-            padding: 4rem 0;
+            padding: 2rem 0; /* 减少上下内边距，更紧凑 */
             color: #999;
+            margin: 0 auto;
+            max-width: 500px;
+            opacity: 0.85; /* 降低透明度，不那么显眼 */
         }
 
         .empty-state i {
-            font-size: 4rem;
-            margin-bottom: 1rem;
+            font-size: 2.5rem; /* 缩小图标 */
+            margin-bottom: 0.8rem;
             color: #DDD;
         }
 
         .empty-state h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            color: #666;
+            font-size: 1rem; /* 缩小标题 */
+            margin-bottom: 0.3rem;
+            color: #888; /* 更浅的颜色 */
+            font-weight: 400;
+        }
+
+        .empty-state p {
+            font-size: 0.9rem; /* 缩小说明文字 */
+            color: #999;
+            margin-bottom: 1rem; /* 减少下边距 */
+        }
+
+        .empty-state .btn-primary {
+            padding: 0.6rem 1.2rem; /* 缩小按钮 */
+            font-size: 0.9rem;
+            border-radius: 8px;
+            margin-top: 0.5rem !important;
+            background-color: rgba(255, 132, 0, 0.9); /* 稍微透明 */
+            border: none;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .empty-state .btn-primary:hover {
+            background-color: #FF8400;
+            transform: translateY(-1px);
         }
 
         /* 模态框样式 */
@@ -644,6 +671,11 @@
         .notification-error {
             background-color: #dc3545;
         }
+        
+        /* 隐藏类 */
+        .hidden {
+            display: none !important;
+        }
     </style>
 </head>
 
@@ -732,6 +764,18 @@
         <div id="websiteGrid" class="website-grid">
             <!-- 动态生成的网站卡片 -->
         </div>
+
+        <!-- 空状态 - 优化版 -->
+        <div id="emptyState" class="empty-state hidden">
+            <i class="fa fa-folder-open"></i>
+            <h3>还没有收藏的网站</h3>
+            <p>点击上方"添加网站"按钮开始收藏</p>
+            <button id="emptyAddBtn" class="btn-primary">
+                <i class="fa fa-plus"></i> 添加网站
+            </button>
+        </div>
+    </div>
+
     <div class="container" id="contact">
         <h2>与我联系</h2>
         <p>如果你对我的内容感兴趣，或者有任何问题，欢迎通过以下方式联系我：</p>
