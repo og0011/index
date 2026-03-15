@@ -438,50 +438,38 @@
             color: #FF6347;
         }
 
-        /* 空状态样式 - 优化版 */
+        /* 空状态样式 - 优化版（隐藏按钮） */
         .empty-state {
             text-align: center;
-            padding: 2rem 0; /* 减少上下内边距，更紧凑 */
+            padding: 2rem 0;
             color: #999;
             margin: 0 auto;
             max-width: 500px;
-            opacity: 0.85; /* 降低透明度，不那么显眼 */
+            opacity: 0.85;
         }
 
         .empty-state i {
-            font-size: 2.5rem; /* 缩小图标 */
+            font-size: 2.5rem;
             margin-bottom: 0.8rem;
             color: #DDD;
         }
 
         .empty-state h3 {
-            font-size: 1rem; /* 缩小标题 */
+            font-size: 1rem;
             margin-bottom: 0.3rem;
-            color: #888; /* 更浅的颜色 */
+            color: #888;
             font-weight: 400;
         }
 
         .empty-state p {
-            font-size: 0.9rem; /* 缩小说明文字 */
-            color: #999;
-            margin-bottom: 1rem; /* 减少下边距 */
-        }
-
-        .empty-state .btn-primary {
-            padding: 0.6rem 1.2rem; /* 缩小按钮 */
             font-size: 0.9rem;
-            border-radius: 8px;
-            margin-top: 0.5rem !important;
-            background-color: rgba(255, 132, 0, 0.9); /* 稍微透明 */
-            border: none;
-            color: white;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            color: #999;
+            margin-bottom: 0; /* 移除按钮后取消下边距 */
         }
 
-        .empty-state .btn-primary:hover {
-            background-color: #FF8400;
-            transform: translateY(-1px);
+        /* 隐藏空状态的添加按钮 */
+        .empty-state .btn-primary {
+            display: none !important;
         }
 
         /* 模态框样式 */
@@ -765,14 +753,12 @@
             <!-- 动态生成的网站卡片 -->
         </div>
 
-        <!-- 空状态 - 优化版 -->
+        <!-- 空状态 - 隐藏添加按钮版本 -->
         <div id="emptyState" class="empty-state hidden">
             <i class="fa fa-folder-open"></i>
             <h3>还没有收藏的网站</h3>
             <p>点击上方"添加网站"按钮开始收藏</p>
-            <button id="emptyAddBtn" class="btn-primary">
-                <i class="fa fa-plus"></i> 添加网站
-            </button>
+            <!-- 移除了这里的添加按钮 -->
         </div>
     </div>
 
@@ -879,7 +865,6 @@
         const emptyState = document.getElementById('emptyState');
         const searchInput = document.getElementById('searchInput');
         const addSiteBtn = document.getElementById('addSiteBtn');
-        const emptyAddBtn = document.getElementById('emptyAddBtn');
         const addModal = document.getElementById('addModal');
         const closeModalBtn = document.getElementById('closeModalBtn');
         const cancelAddBtn = document.getElementById('cancelAddBtn');
@@ -980,7 +965,6 @@
 
             // 添加网站模态框控制
             addSiteBtn.addEventListener('click', openModal);
-            emptyAddBtn.addEventListener('click', openModal);
             closeModalBtn.addEventListener('click', closeModal);
             cancelAddBtn.addEventListener('click', closeModal);
             addModal.addEventListener('click', (e) => {
